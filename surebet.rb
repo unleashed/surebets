@@ -28,13 +28,22 @@ class SureBet
     capital.inject { |a, i| a + i }
   end
 
-  def invest
-    min = capital.min
-    capital.map { |i| i / min }
+  def invest(sum = nil)
+    if sum.nil?
+      min = capital.min
+      capital.map { |i| i / min }
+    else
+      caprisk = capitalrisk
+      capital.map { |i| (i * sum) / caprisk }
+    end
   end
 
   def investtotal
     invest.inject { |a, i| a + i }
+  end
+
+  def invest_for(earnsum)
+    invest(earnsum.to_f / profit)
   end
 
   def earnings
@@ -47,8 +56,11 @@ class SureBet
     all
   end
 
-  def profit
-    (betprize / capitalrisk) - 1
+  def profit(fromsum = nil)
+    bp = betprize
+    cr = capitalrisk
+    pf = (bp / cr) - 1
+    fromsum ? fromsum * pf : pf
   end
 
   def profit_s
