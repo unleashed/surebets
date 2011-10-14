@@ -1,19 +1,19 @@
 # returns an array of capital percentage relation per odd
 class SureBet
-  attr_accessor :betmul
+  attr_accessor :bets
 
-  def initialize(betmul)
-    @betmul = betmul
+  def initialize(bets)
+    @bets = bets
   end
 
   def betprize
-    # betmul contains the multiplier for each possibility
-    @betmul.inject { |a, mul| a + mul }.to_f
+    # bets contains the multiplier for each possibility
+    @bets.inject { |a, mul| a + mul }.to_f
   end
 
   def betrelation
     total = betprize
-    betmul.map { |mul| mul.to_f / total }
+    bets.map { |mul| mul.to_f / total }
   end
 
   # this gives the capital needed to cover the bet
@@ -41,7 +41,7 @@ class SureBet
     all = []
     inv = invest
     invtotal = investtotal
-    betmul.each_with_index do |mul, i|
+    bets.each_with_index do |mul, i|
       all << mul * inv[i] - invtotal
     end
     all
