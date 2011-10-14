@@ -1,6 +1,6 @@
 # returns an array of capital percentage relation per odd
 class SureBet
-  attr_reader :betmul
+  attr_accessor :betmul
 
   def initialize(betmul)
     @betmul = betmul
