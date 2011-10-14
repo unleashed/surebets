@@ -28,18 +28,18 @@ class SureBet
     capital.inject { |a, i| a + i }
   end
 
-  def investmap
+  def invest
     min = capital.min
     capital.map { |i| i / min }
   end
 
   def investtotal
-    investmap.inject { |a, i| a + i }
+    invest.inject { |a, i| a + i }
   end
 
   def earnings
     all = []
-    inv = investmap
+    inv = invest
     invtotal = investtotal
     betmul.each_with_index do |mul, i|
       all << mul * inv[i] - invtotal
