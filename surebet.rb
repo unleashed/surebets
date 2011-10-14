@@ -48,11 +48,11 @@ class SureBet
   end
 
   def profit
-    betprize / capitalrisk
+    (betprize / capitalrisk) - 1
   end
 
   def profit_s
-    "#{profit * 100 - 100}%"
+    "#{profit * 100}%"
   end
 
   def surebet?
