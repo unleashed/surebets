@@ -46,6 +46,10 @@ class SureBet
     invest(earnsum.to_f / profit)
   end
 
+  def sum_for(earnsum)
+    invest_for(earnsum).inject { |a, i| a + i }
+  end
+
   def earnings
     all = []
     inv = invest
