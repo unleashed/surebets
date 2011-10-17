@@ -8,7 +8,7 @@ class SureBet
 
   def betprize
     # bets contains the multiplier for each possibility
-    @bets.inject { |a, mul| a + mul }.to_f
+    @bets.inject(:+).to_f
   end
 
   def betrelation
@@ -25,7 +25,7 @@ class SureBet
   end
 
   def capitalrisk
-    capital.inject { |a, i| a + i }
+    capital.inject(:+)
   end
 
   def invest(sum = nil)
@@ -39,7 +39,7 @@ class SureBet
   end
 
   def investtotal
-    invest.inject { |a, i| a + i }
+    invest.inject(:+)
   end
 
   def invest_for(earnsum)
@@ -47,7 +47,7 @@ class SureBet
   end
 
   def sum_for(earnsum)
-    invest_for(earnsum).inject { |a, i| a + i }
+    invest_for(earnsum).inject(:+)
   end
 
   def earnings
